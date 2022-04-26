@@ -1,41 +1,43 @@
 #include "main.h"
 
-void hookControl(){
+void frontClawControl(){
   bool closeHook = master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN);
   bool openHook = master.get_digital(pros::E_CONTROLLER_DIGITAL_UP);
 
   if (closeHook){
-    piston1.set_value(false);
-    piston2.set_value(false);
-    pros::lcd::print(1,"true pressed");
+    closeClawPistons();
   }
   else if(openHook){
-    piston1.set_value(true);
-    piston2.set_value(true);
-    pros::lcd::print(1,"false ressed");
+    openClawPistons();
   }
 }
-void frontClawControl(){
-  frontClawMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+void backClawControl(){
   bool closeHook = master.get_digital(pros::E_CONTROLLER_DIGITAL_B);
   bool openHook = master.get_digital(pros::E_CONTROLLER_DIGITAL_X);
+
   if (closeHook){
-    frontClawMotor.move_velocity(-100);
+    closeBackPistons();
   }
   else if(openHook){
-    frontClawMotor.move_velocity(100);
-  }
-  else{
-    frontClawMotor.move_velocity(0);
+    openBackPistons();
   }
 }
-void openPistons(){
-  piston1.set_value(true);
-  piston2.set_value(true);
+
+void openClawPistons(){
+  clawPiston1.set_value(true);
+  clawPiston2.set_value(true);
 }
-void closePistons(){
-  piston1.set_value(false);
-  piston2.set_value(false);
+void closeClawPistons(){
+  clawPiston1.set_value(false);
+  clawPiston2.set_value(false);
+}
+void openBackPistons(){
+  backPiston1.set_value(true);
+  backPiston2.set_value(true);
+}
+void closeBackPistons(){
+  backPiston1.set_value(false);
+  backPiston2.set_value(false);
 }
 
 /*int hookVelocity = 150;

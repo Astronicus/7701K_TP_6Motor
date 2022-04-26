@@ -99,10 +99,9 @@ void opcontrol() {
 	int counter=0;
 	while (true) {
 		driveControl();
-		hookControl();
-		backFourBarControl();
-		liftControl();
 		frontClawControl();
+		backClawControl();
+		liftControl();
 		//update_position90();
 
 		bool runAuton = master.get_digital(pros::E_CONTROLLER_DIGITAL_A);

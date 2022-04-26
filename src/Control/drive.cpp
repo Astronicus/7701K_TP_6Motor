@@ -1,16 +1,28 @@
 #include "main.h"
 
 void brakeMode(){
-  frontLeft.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-  frontRight.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  frontLeft1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  frontLeft2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  frontRight1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  frontRight2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
   backLeft.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
   backRight.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 void coastMode(){
-  frontLeft.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  frontRight.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  frontLeft1.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  frontRight1.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  frontLeft2.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  frontRight2.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   backLeft.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   backRight.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+}
+void moveDrive(float leftSpeed, float rightSpeed){
+  frontLeft1.move(leftSpeed);
+  frontRight1.move(rightSpeed);
+  frontLeft2.move (leftSpeed);
+  frontRight2.move(rightSpeed);
+  backLeft.move(leftSpeed);
+  backRight.move(rightSpeed);
 }
 void printDriveSpeeds(float fl, float fr, float bl, float br){
   pros::lcd::print(0,"FL: %f",fl);
@@ -45,14 +57,8 @@ void driveControl() { //split arcade drive
   double turnInput = master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127.0;
   double turnSpeed = turnConst * (pow(turnInput, 3) / 10000 + turnInput / turnConst) / (turnConst + 1);
 
-  float frontLeftMod = (LEFTY + turnSpeed); //front left
-  float frontRightMod = (LEFTY - turnSpeed); //front right
-  float backLeftMod = (LEFTY + turnSpeed); //back left
-  float backRightMod = (LEFTY - turnSpeed); //back right
+  float leftMod = (LEFTY + turnSpeed); //front left
+  float rightMod = (LEFTY - turnSpeed); //front right
 
-  frontLeft.move (frontLeftMod ); // * driveMultiplier
-  frontRight.move(frontRightMod );
-  backLeft.move  (backLeftMod  );
-  backRight.move (backRightMod  );
-
+  moveDrive(leftMod,rightMod);
 } // Op Drive Ends//
