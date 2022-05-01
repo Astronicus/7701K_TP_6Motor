@@ -1,8 +1,10 @@
 #include "main.h"
 
 void drivePID(double distance, int maxVoltage){
-  frontLeft.tare_position(); //set all motor positions to 0
-  frontRight.tare_position();
+  frontLeft1.tare_position(); //set all motor positions to 0
+  frontRight1.tare_position();
+  frontLeft2.tare_position();
+  frontRight2.tare_position();
   backLeft.tare_position();
   backRight.tare_position();
 
@@ -49,10 +51,7 @@ void drivePID(double distance, int maxVoltage){
       giveVoltage = 25 * abs(giveVoltage)/giveVoltage;
     }
 
-    frontLeft.move(giveVoltage);
-    frontRight.move(giveVoltage);
-    backLeft.move(giveVoltage);
-    backRight.move(giveVoltage);
+    move_drive(giveVoltage,giveVoltage);
 
     if(fabs(error) <= 10){
       break;
@@ -64,8 +63,10 @@ void drivePID(double distance, int maxVoltage){
 }
 
 void turnPID(double degrees, int maxVoltage){
-  frontLeft.tare_position(); //set all motor positions to 0
-  frontRight.tare_position();
+  frontLeft1.tare_position(); //set all motor positions to 0
+  frontRight1.tare_position();
+  frontLeft2.tare_position(); //set all motor positions to 0
+  frontRight2.tare_position();
   backLeft.tare_position();
   backRight.tare_position();
 
@@ -112,10 +113,7 @@ void turnPID(double degrees, int maxVoltage){
       giveVoltage = 35 * abs(giveVoltage)/giveVoltage;
     }
 
-    frontLeft.move(-giveVoltage);
-    frontRight.move(giveVoltage);
-    backLeft.move(-giveVoltage);
-    backRight.move(giveVoltage);
+    move_drive(-giveVoltage,giveVoltage);
 
     if(fabs(error) <= 10){
       break;

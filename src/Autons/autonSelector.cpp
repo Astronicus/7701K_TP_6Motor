@@ -1,13 +1,53 @@
 #include "main.h"
 
 
-//unsigned int auton_num{}; //global <--declared in main
+int autonChosen{}; //global <--declared in main
+static std::vector<std::string> autonNames = {"left winP", "right winP", "leftNeut", "rightNeut"};
+static bool autonSelected = false;
+
+void on_center_button() {
+  pros::lcd::clear_line(2);
+  pros::lcd::set_text(2, "PLEASE SELECT THE AUTONOMOUS:");
+  pros::lcd::set_text(3, autonNames[autonChosen]);
+  autonSelected = true;
+}
+
+void on_left_button(){
+      pros::lcd::clear_line(2);
+      if (autonChosen > 0) {
+          autonChosen--;
+      }
+      pros::lcd::set_text(2, "PLEASE SELECT THE AUTONOMOUS:");
+      pros::lcd::set_text(3, autonNames[autonChosen]);
+}
+void on_right_button(){
+      if (autonChosen < 3) {
+          autonChosen++;
+      }
+      pros::lcd::clear_line(2);
+      pros::lcd::set_text(2, "PLEASE SELECT THE AUTONOMOUS:");
+      pros::lcd::set_text(3, autonNames[autonChosen]);
+  }
 
 void setupSelector(){
+  pros::lcd::initialize();
+  std::vector<std::string> autonNames = {"left winP", "right winP", "leftNeut", "rightNeut"};
+
+  pros::lcd::register_btn0_cb(on_left_button);
+  pros::lcd::register_btn1_cb(on_center_button);
+  pros::lcd::register_btn2_cb(on_right_button);
+  autonSelected = false;
+
+    while(!autonSelected){
+          pros::lcd::set_text(2, "PLEASE SELECT THE AUTONOMOUS:");
+          pros::lcd::set_text(3, autonNames[autonChosen]);
+          pros::delay(100);
+        }
+    }
 
   //Auton Selector
 
-  unsigned int count{};
+  /*unsigned int count{};
   std::string autonNames[9]= {"Left","Right","LeftWinP","RightWinP","Skills1","Skills2","Skills3","NeutralDist","doNothing"};
   count=0; //defined in main.h
   bool runSelector = true;
@@ -50,4 +90,4 @@ void setupSelector(){
     }
 	}
   pros::lcd::set_text(1, "Selector ended");// End autonSelector while statement
-} // End if
+  */// End if

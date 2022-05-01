@@ -1,19 +1,19 @@
 #include "main.h"
 //Motor Setup
 
-#define frntLftMtr1_PORT 20
-#define frntLftMtr2_PORT 20
-#define bckLftMtr_PORT 9
-#define frntRghtMtr1_PORT 11
-#define frntRghtMtr2_PORT 11
-#define bckRghtMtr_PORT 4
+#define frntLftMtr1_PORT 4
+#define frntLftMtr2_PORT 3
+#define bckLftMtr_PORT 5
+#define frntRghtMtr1_PORT 1
+#define frntRghtMtr2_PORT 2
+#define bckRghtMtr_PORT 6
 
-#define lift_PORT 5
-#define conveyor_PORT 1
+#define lift_PORT 7
+#define conveyor_PORT 20
 
-#define clawPiston1_PORT 'A'
-#define clawPiston2_PORT 'B'
-#define backPiston1_PORT 'A'
+#define clawPiston1_PORT 'H'
+#define clawPiston2_PORT 'G'
+#define backPiston1_PORT 'B'
 #define backPiston2_PORT 'B'
 
 #define tapC_PORT 'E'
@@ -23,12 +23,12 @@
 
 pros::Controller master (CONTROLLER_MASTER);
 
-pros::Motor frontLeft1(frntLftMtr1_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor frontLeft2(frntLftMtr2_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor backLeft(bckLftMtr_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor frontRight1(frntRghtMtr1_PORT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor frontRight2(frntLftMtr2_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor backRight(bckRghtMtr_PORT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor frontLeft1(frntLftMtr1_PORT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor frontLeft2(frntLftMtr2_PORT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor backLeft(bckLftMtr_PORT, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor frontRight1(frntRghtMtr1_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor frontRight2(frntRghtMtr2_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor backRight(bckRghtMtr_PORT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::Motor liftMotor(lift_PORT, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_ROTATIONS);
 pros::Motor conveyorMotor(conveyor_PORT, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_ROTATIONS);

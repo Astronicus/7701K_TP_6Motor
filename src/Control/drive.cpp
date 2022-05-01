@@ -19,7 +19,7 @@ void coastMode(){
 void moveDrive(float leftSpeed, float rightSpeed){
   frontLeft1.move(leftSpeed);
   frontRight1.move(rightSpeed);
-  frontLeft2.move (leftSpeed);
+  frontLeft2.move(leftSpeed);
   frontRight2.move(rightSpeed);
   backLeft.move(leftSpeed);
   backRight.move(rightSpeed);
@@ -53,12 +53,14 @@ void driveControl() { //split arcade drive
     RIGHTX=0;
   }
 
-  double turnConst = 1.5;       // lower = linear, higher = cubic; cannot be 0
+  double turnConst = 1.67;       // lower = linear, higher = cubic; cannot be 0
   double turnInput = master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127.0;
   double turnSpeed = turnConst * (pow(turnInput, 3) / 10000 + turnInput / turnConst) / (turnConst + 1);
+  turnSpeed = turnSpeed * 0.85;
 
   float leftMod = (LEFTY + turnSpeed); //front left
   float rightMod = (LEFTY - turnSpeed); //front right
 
+  coastMode();
   moveDrive(leftMod,rightMod);
 } // Op Drive Ends//

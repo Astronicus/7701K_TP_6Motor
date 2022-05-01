@@ -6,15 +6,6 @@
  * When this callback is fired, it will toggle line 2 of the LCD text between
  * "I was pressed!" and nothing.
  */
-void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
-	} else {
-		pros::lcd::clear_line(2);
-	}
-}
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -25,7 +16,6 @@ void on_center_button() {
 float tpu = 51.6;
 float tpuTurn = 8.5;
 void initialize() {
-	pros::lcd::initialize();
 	setupSelector();
 
 }
@@ -66,11 +56,12 @@ void competition_initialize() {
 unsigned int auton_num{};
 void autonomous() {
 	//skillsRun();
-		switch(auton_num){
-	        case 0: leftAuton(); break;
-	        case 1: rightAuton(); break;
-	        case 2: leftWPAuton(); break;
-					case 3: rightWPAuton(); break;
+		switch(autonChosen){
+	        case 0: leftWPAuton(); break;
+	        case 1: rightWPAuton(); break;
+	        case 2: leftAuton(); break;
+					case 3: rightAuton(); break;
+
 					case 4: skillsRun(); break;
 					case 5: skillsRun2(); break;
 					case 6: skillsRun3(); break;

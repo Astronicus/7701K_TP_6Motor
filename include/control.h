@@ -18,6 +18,7 @@ void armMove(float distance, float velocity);
 void turnRel(float distance, float velocity);
 void turnPID(double degrees, int maxVoltage);
 void drivePID(double distance, int maxVoltage);
+void intakeControl();
 
 void openClawPistons();
 void closeClawPistons();

@@ -3,16 +3,19 @@
 extern double global_x;
 extern double global_y;
 
+
+void leftWPAuton(){
+  armMove(20,100);
+}
+
+void rightWPAuton(){
+  moveRel(0.1,100);
+}
+
 void leftAuton(){
 }
 
 void rightAuton(){
-}
-
-void leftWPAuton(){
-}
-
-void rightWPAuton(){
 }
 
 void skillsRun(){
