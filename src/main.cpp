@@ -93,6 +93,7 @@ void opcontrol() {
 		frontClawControl();
 		backClawControl();
 		liftControl();
+		intakeControl();
 		//update_position90();
 
 		bool runAuton = master.get_digital(pros::E_CONTROLLER_DIGITAL_A);
