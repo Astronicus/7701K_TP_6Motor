@@ -5,11 +5,30 @@ extern double global_y;
 
 
 void leftWPAuton(){
-  armMove(20,100);
+  closeBackPistons();
+  pros::delay(350);
+  conveyorIntake(10,113);
+  turnRel(90,75);
+  openBackPistons();
+  moveRel(2.3,200);
+  closeClawPistons();
+  moveRel(-2.0,100);
+  
 }
 
 void rightWPAuton(){
-  moveRel(0.1,100);
+  openBackPistons();
+  moveRel(-0.8,100);
+  closeBackPistons();
+  conveyorIntake(10,113);
+  turnRel(180,100);
+  openBackPistons();
+  turnRel(-60,100);
+  moveRel(2.8,100);
+  closeClawPistons();
+  moveRel(-2.0,100);
+
+
 }
 
 void leftAuton(){
@@ -18,17 +37,11 @@ void leftAuton(){
 void rightAuton(){
 }
 
-void skillsRun(){
+void leftCentAuton(){
 }
 
-void skillsRun2(){
-}
-
-void skillsRun3(){
+void rightCentAuton(){
 }
 
 void doNothing(){
-}
-
-void neutralDistAuton(){
 }

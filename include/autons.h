@@ -14,7 +14,8 @@ void skillsRun2();
 void skillsRun3();
 void neutralDistAuton();
 void doNothing();
-
+void leftCentAuton();
+void rightCentAuton();
 
 
 #endif

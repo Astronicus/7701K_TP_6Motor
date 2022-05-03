@@ -81,3 +81,7 @@ void armMove(float distance, float velocity){
   pros::delay(10);
   update_position();
 }
+void conveyorIntake(float time, float velocity){
+  time*=10;
+  conveyorMotor.move_relative(time, velocity);
+}

@@ -2,7 +2,7 @@
 
 
 int autonChosen{}; //global <--declared in main
-static std::vector<std::string> autonNames = {"left winP", "right winP", "leftNeut", "rightNeut"};
+static std::vector<std::string> autonNames = {"left winP", "right winP", "leftNeut", "rightNeut","leftCent","rightCent"};
 static bool autonSelected = false;
 
 void on_center_button() {
@@ -21,7 +21,7 @@ void on_left_button(){
       pros::lcd::set_text(3, autonNames[autonChosen]);
 }
 void on_right_button(){
-      if (autonChosen < 3) {
+      if (autonChosen < 5) {
           autonChosen++;
       }
       pros::lcd::clear_line(2);
@@ -31,7 +31,7 @@ void on_right_button(){
 
 void setupSelector(){
   pros::lcd::initialize();
-  std::vector<std::string> autonNames = {"left winP", "right winP", "leftNeut", "rightNeut"};
+  std::vector<std::string> autonNames = {"left winP", "right winP", "leftNeut", "rightNeut","leftCent","rightCent"};
 
   pros::lcd::register_btn0_cb(on_left_button);
   pros::lcd::register_btn1_cb(on_center_button);

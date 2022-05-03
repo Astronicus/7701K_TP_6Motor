@@ -19,6 +19,7 @@ void turnRel(float distance, float velocity);
 void turnPID(double degrees, int maxVoltage);
 void drivePID(double distance, int maxVoltage);
 void intakeControl();
+void conveyorIntake(float time, float velocity);
 
 void openClawPistons();
 void closeClawPistons();

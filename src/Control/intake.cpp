@@ -1,7 +1,7 @@
 #include "main.h"
 
-double intakeVoltage = 127;
-double outtakeVoltage = -127; //HEY WAASIF VOLTAGE GOES BETWEEN 0 AND 127 SO MAKE IT LOWER IF ITS NOT WORKING
+double intakeVoltage = 110;
+double outtakeVoltage = -110; //HEY WAASIF VOLTAGE GOES BETWEEN 0 AND 127 SO MAKE IT LOWER IF ITS NOT WORKING
 
 void intakeControl(){
   bool intake = master.get_digital(DIGITAL_R1);
@@ -12,5 +12,8 @@ void intakeControl(){
   }
   else if(outtake){
     conveyorMotor.move(outtakeVoltage);
+  }
+  else{
+    conveyorMotor.move(0);
   }
 }

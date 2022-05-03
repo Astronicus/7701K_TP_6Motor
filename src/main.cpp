@@ -62,12 +62,8 @@ void autonomous() {
 	        case 2: leftAuton(); break;
 					case 3: rightAuton(); break;
 
-					case 4: skillsRun(); break;
-					case 5: skillsRun2(); break;
-					case 6: skillsRun3(); break;
-					case 7: neutralDistAuton(); break;
-					case 8: doNothing(); break;
-	        default: leftAuton(); break;
+					case 4: leftCentAuton(); break;
+					case 5: rightCentAuton(); break;
 	    }
 }
 
@@ -101,10 +97,10 @@ void opcontrol() {
 			 autonomous();
 		}
 
-		/*counter++;
+		counter++;
 		if (counter%5==0){
-		printf("%f\n",chassis::rightMotors->getPosition());
-	}*/
+		printf("%f\n",backLeft.get_position());
+	}
 
 		pros::delay(20);
 	}

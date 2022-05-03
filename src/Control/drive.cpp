@@ -53,12 +53,12 @@ void driveControl() { //split arcade drive
     RIGHTX=0;
   }
 
-  double turnConst = 1.67;       // lower = linear, higher = cubic; cannot be 0
+  double turnConst = 1.85;       // lower = linear, higher = cubic; cannot be 0
   double turnInput = master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127.0;
   double turnSpeed = turnConst * (pow(turnInput, 3) / 10000 + turnInput / turnConst) / (turnConst + 1);
-  turnSpeed = turnSpeed * 0.85;
+  turnSpeed = turnSpeed * 0.95;
 
-  float leftMod = (LEFTY + turnSpeed); //front left
+  float leftMod = (LEFTY + turnSpeed); ///front left
   float rightMod = (LEFTY - turnSpeed); //front right
 
   coastMode();
